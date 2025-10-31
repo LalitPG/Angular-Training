@@ -4,13 +4,22 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   status:boolean=false;
 
-  validate(user: string, password: string): boolean {
-     
-      return false;
-     
- }
+      validate(user: string, password: string): boolean {
+       console.log(user);
+       console.log(password);
+      if (user === 'lalit.patil@nihilent.com' && password === 'joy123') {
+        this.status=true;
+        console.log("checked True");
+        localStorage.setItem('username', user);
+        return true;
+      }
+      else{
+        console.log(" service Invalid User");
+        return false;
+      }   
+     }
 
- logout(): any {   }
- getUser(): any {   }
- isLoggedIn(): boolean {   return false;  }
+    logout(): any {   localStorage.removeItem('username'); }
+    getUser(): any {   return localStorage.getItem('username'); }
+    isLoggedIn(): boolean {    return this.getUser() !== null;  }
 }

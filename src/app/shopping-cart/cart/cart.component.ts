@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item as CartItem } from '../models/Item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,13 +13,16 @@ import { ThisReceiver } from '@angular/compiler';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent {
+export class CartComponent  implements OnInit  {
  cartItems: CartItem[] = [];
   totalPrice = 0;
-  storageKey = 'sessionKey';
 
   constructor(private crm:CartService) {}
   
+  ngOnInit(): void {
+    console.log('calling init of cart component');
+    this.loadCart(); // Load cart items and total price
+  }
   addCart(cartItem: CartItem)
   {
     this.crm.addToCart(cartItem);
@@ -38,17 +41,16 @@ export class CartComponent {
     this.crm.clearCart();
     this.loadCart();
   }
-  getTotalItems():number
+  getTotalItems()
   {
-     const cart = this.crm.getCartItems();
-     return cart.length
+     return this.crm.getTotalItems();
   }
   getTotalPrice()
   {
-    return this.crm.getTotalItems();
+    return this.crm.getTotalPrice();
   }
-  saveCart(cart:CartItem[]):void
+  updateQuantity(productId: number, quantity: number)
   {
-    sessionStorage.setItem(this.storageKey,JSON.stringify(cart));
+    this.crm.updateQuantity(productId,quantity);
   }
 }

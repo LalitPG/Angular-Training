@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
-
+import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet} from '@angular/router';
 export class Credential  {
   constructor(public  email:string,public  password:string){  }
 }
@@ -20,7 +19,8 @@ export class SignInComponent {
   isValidUser:boolean=false;
   user: Credential=new Credential("lalit.patil@nihilent.com","joy123");
  
-   constructor(private svc:AuthService) {    }  //DI
+   constructor(private svc:AuthService,
+    private router: Router) {    }  //DI
 
     onSubmit(form:any):void
     { 
@@ -28,6 +28,7 @@ export class SignInComponent {
       
        if(this.isValidUser)
        { 
+         this.router.navigate(['/home']);
          console.log("Valid User !"); 
        }
        else{ console.log("Invalid User !"); }   

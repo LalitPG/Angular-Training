@@ -1,5 +1,4 @@
 import { Component, Input, Output ,EventEmitter} from '@angular/core';
-
 @Component({
   selector: 'app-counter',
   standalone: true,
@@ -8,22 +7,17 @@ import { Component, Input, Output ,EventEmitter} from '@angular/core';
   styleUrl: './counter.component.css'
 })
 export class CounterComponent {
+  @Input() count: number | undefined;  // Allow undefined
 
-    //data member
 
-    @Input() count:number=0;
     @Output() update=new EventEmitter();
 
-   //Event handlers, Event listeners, Callback functions
-
-   //Event handlers
     increment(){ 
-      this.count++;
+      this.count = (this.count || 0) + 1;
       this.update.emit({count:this.count});
     }
     decrement(){
-      this.count--;
+      this.count = (this.count || 0) - 1;
       this.update.emit({count:this.count});
     }
-
 }

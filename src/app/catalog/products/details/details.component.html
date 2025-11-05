@@ -1,8 +1,62 @@
-<div *ngIf="product">
-<p> {{product.title}}</p>
-<p>{{product.description}}</p>
-<img src="{{product.imageurl}}" width="200" height="200"/>
-<p>Likes: {{product.likes}}</p>
-<app-counter [count]="product.likes"  (update)="onUpdate($event)">
-</app-counter>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Product Details</h2>
+  <div class="card shadow-lg border-0">
+    <div class="row g-0 align-items-center">
+      <!-- Product Image -->
+      <div class="col-md-4 text-center p-3">
+        <img
+          [src]="product?.imageurl"
+          class="img-fluid rounded"
+          alt="{{ product?.title }}"
+        />
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title text-primary fw-bold">{{ product?.title }}</h4>
+          <p class="card-text text-muted">{{ product?.description }}</p>
+          <hr />
+          <p class="card-text mb-1">
+            <strong>Price:</strong> ₹{{ product?.price }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Likes:</strong> {{ product?.likes }}
+          </p>
+
+          <!-- Counter Component -->
+          <div class="mt-3">
+            <app-counter
+              [count]="product?.likes"
+              (update)="onUpdate($event)"
+            ></app-counter>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-4 d-flex flex-wrap gap-2">
+            <button
+              class="btn btn-success"
+              (click)="addToCart()"
+            >
+              🛒 Add to Cart
+            </button>
+
+            <button
+              class="btn btn-warning text-white"
+              (click)="goToUpdate()"
+            >
+              ✏️ Update
+            </button>
+
+            <button
+              class="btn btn-danger"
+              (click)="goToDelete(2)"
+            >
+              🗑 Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

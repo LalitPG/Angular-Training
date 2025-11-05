@@ -1,27 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../product.service';
-import { Product } from '../../models/product';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DetailsComponent } from '../details/details.component';
+import { ProductService } from '../../product.service';
+import { CounterComponent } from '../counter/counter.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, DetailsComponent],
+  imports: [CommonModule, RouterModule ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class ListComponent implements OnInit {
-  products: Product[] = [];
-  constructor(private productService: ProductService) {}
+export class ListComponent {
+products:any[]=[]
+   
 
+  constructor(private svc:ProductService,
+              private router: Router,
+              private route: ActivatedRoute) {  }
 
   ngOnInit() {
-    this.loadProducts();
+    this.products = this.svc.getAllProducts();
   }
-  
-  loadProducts() {
-     this.products=this.productService.getAll();
-  };
 
+
+  goToProduct(id:number): void {
+    console.log(id);
+    this.router.navigate(['/details',id]);
+  }
 }

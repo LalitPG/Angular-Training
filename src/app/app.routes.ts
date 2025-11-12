@@ -10,8 +10,8 @@ import { CartComponent } from './shopping-cart/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'lists', component: ListComponent },
-  { path: 'details/:id', component: DetailsComponent },
+  { path: 'lists', loadComponent:()=>import('./catalog/products/list/list.component').then(m=>m.ListComponent)},
+  { path: 'details/:id', loadComponent:()=>import('./catalog/products/details/details.component').then(m=>m.DetailsComponent) },
   { path: 'update/:id', component: UpdateComponent },
   { path: 'delete/:id', component: DeleteComponent },
   { path: 'login', component:  SignInComponent},

@@ -6,17 +6,18 @@ import { ProductService } from '../../product.service';
 import { Product } from '../../models/product';
 import { CounterComponent } from '../counter/counter.component';
 import { Item as CartItem }from '../../../shopping-cart/models/Item'
+import { ProductHighlightDirective } from '../../../shared/product-highlight.directive';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule,FormsModule,CounterComponent],
+  imports: [CommonModule,FormsModule,CounterComponent,ProductHighlightDirective],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit {
 
   currentProductId:any;
-  @Input () product: Product|undefined;
+  @Input () product!: Product;
   private storageKey = 'shoppingCart';
   cartItems: CartItem[] = [];
   cartItem! : CartItem;

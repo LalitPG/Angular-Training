@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink, RouterModule, RouterOutlet} from '@
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../product.service';
 import { CounterComponent } from '../counter/counter.component';
+import { ProductHighlightDirective } from '../../../shared/product-highlight.directive';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, RouterModule ],
+  imports: [CommonModule, RouterModule, ProductHighlightDirective ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })

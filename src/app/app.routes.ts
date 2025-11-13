@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './membership/register/register.component';
 import { DeleteComponent } from './catalog/products/delete/delete.component';
 import { CartComponent } from './shopping-cart/cart/cart.component';
+import { Loggedinguard } from './loggedinguard.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,7 +16,7 @@ export const routes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'delete/:id', component: DeleteComponent },
   { path: 'login', component:  SignInComponent},
-  { path: 'home', component:  HomeComponent},
+  { path: 'home', component:  HomeComponent,canActivate:[Loggedinguard]},
   { path: 'addtocart', component:  CartComponent},
   { path: 'register', component:  RegisterComponent},
   { path: 'cart', component:  CartComponent}

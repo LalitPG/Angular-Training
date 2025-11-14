@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { Product } from '../catalog/models/product';
 
 @Directive({
@@ -21,6 +21,16 @@ export class ProductHighlightDirective implements OnInit {
       this.renderer.setStyle(this.el.nativeElement,'pointer-events','none');
       this.renderer.setStyle(this.el.nativeElement,'cursor','default');
     }
+  }
+  
+  @HostListener('mouseenter')
+  onEnter() {
+    this.renderer.setStyle(this.el.nativeElement, 'background-color', 'pink');
+  }
+
+  @HostListener('mouseleave')
+  onLeave() {
+    this.renderer.setStyle(this.el.nativeElement, 'background-color', 'white');
   }
 
 }

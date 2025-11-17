@@ -8,6 +8,7 @@ import { RegisterComponent } from './membership/register/register.component';
 import { DeleteComponent } from './catalog/products/delete/delete.component';
 import { CartComponent } from './shopping-cart/cart/cart.component';
 import { Loggedinguard } from './loggedinguard.service';
+import { GdiComponent } from './graphics/gdi/gdi.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'home', component:  HomeComponent,canActivate:[Loggedinguard]},
   { path: 'addtocart', component:  CartComponent},
   { path: 'register', component:  RegisterComponent},
-  { path: 'cart', component:  CartComponent}
+  { path: 'cart', component:  CartComponent},
+  { path: 'gdi', component:  GdiComponent}
 ];

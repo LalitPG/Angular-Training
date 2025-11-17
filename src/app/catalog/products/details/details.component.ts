@@ -6,7 +6,7 @@ import { ProductService } from '../../product.service';
 import { Product } from '../../models/product';
 import { CounterComponent } from '../counter/counter.component';
 import { Item as CartItem }from '../../../shopping-cart/models/Item'
-import { ProductHighlightDirective } from '../../../shared/product-highlight.directive';
+import { ProductHighlightDirective } from '../../../custom/custom/product-highlight.directive';
 @Component({
   selector: 'app-details',
   standalone: true,

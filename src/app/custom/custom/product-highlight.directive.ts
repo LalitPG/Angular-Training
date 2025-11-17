@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
-import { Product } from '../catalog/models/product';
+import { Product } from '../../catalog/models/product';
 
 @Directive({
   selector: '[appProductHighlight]',

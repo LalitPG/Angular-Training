@@ -4,11 +4,12 @@ import { CatalogModule } from './catalog/catalog.module';
 import { CommonModule } from '@angular/common';
 import { MembershipModule } from './membership/membership.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { GraphicsModule } from './graphics/graphics.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule,RouterOutlet, CatalogModule, ShoppingCartModule, MembershipModule],
+  imports: [CommonModule, RouterModule, GraphicsModule, RouterOutlet, CatalogModule, ShoppingCartModule, MembershipModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

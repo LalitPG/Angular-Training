@@ -12,7 +12,8 @@ import { ProductHighlightDirective } from '../../../custom/custom/product-highli
   standalone: true,
   imports: [CommonModule,FormsModule,CounterComponent,ProductHighlightDirective],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
+  providers: [ProductService]
 })
 export class DetailsComponent implements OnInit {
 
@@ -26,8 +27,13 @@ export class DetailsComponent implements OnInit {
               private productService: ProductService) {  }
   
   ngOnInit() { 
+    console.log('details init');
     this.currentProductId=this.route.snapshot.paramMap.get("id");
-    this.product=this.productService.getProductById(this.currentProductId);
+
+    this.productService.getProductById(this.currentProductId).subscribe((data)=>{
+      console.log(data);
+      this.product = data;
+    });
   };
  
   onUpdate(data:any){
@@ -40,16 +46,18 @@ export class DetailsComponent implements OnInit {
     
     let id=this.currentProductId;
     console.log("Adding to cart product with id:", id);
-    this.product = this.productService.getProductById(this.currentProductId);
-    this.cartItems = JSON.parse(sessionStorage.getItem(this.storageKey) || '[]');
-    this.cartItem = new CartItem(this?.product!.id,this.product!.title,this.product!.price,1,this.product!.imageurl);
-    this.cartItems.push(this.cartItem);
-    sessionStorage.setItem(this.storageKey, JSON.stringify(this.cartItems));
-    this.router.navigate(['./addtocart']);
+    this.productService.getProductById(this.currentProductId).subscribe((data)=>{
+      this.product = data;
+    });
+    console.log(this.product);
+     this.cartItems = JSON.parse(sessionStorage.getItem(this.storageKey) || '[]');
+     this.cartItem = new CartItem(this?.product!.id,this.product!.title,this.product!.price,1,this.product!.imageurl);
+     this.cartItems.push(this.cartItem);
+     sessionStorage.setItem(this.storageKey, JSON.stringify(this.cartItems));
+     this.router.navigate(['./addtocart']);
   }
 
-  goToUpdate(): void {
-   let  id=this.currentProductId;
+  goToUpdate(id:number): void {
    console.log("Updating product with id:", id);
    this.router.navigate(['./update/', id]);
   }
@@ -60,14 +68,9 @@ export class DetailsComponent implements OnInit {
   }
    // ngIf
   isLoggedIn = true;
-  userName = 'Ravi';
+  userName = 'Lalit';
 
   // ngFor
-  products = [
-    { name: 'Rose', price: 12 },
-    { name: 'Lotus', price: 25 },
-    { name: 'Gerbera', price: 8 },
-  ];
 
   // ngSwitch
   status = 'outofstock';

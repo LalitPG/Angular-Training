@@ -15,6 +15,11 @@
     </div>
 
     <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input id="price" type="number" class="form-control" name="price" [(ngModel)]="product.price" placeholder="Enter product price" min="0"/>
+    </div>
+
+    <div class="mb-3">
       <label for="imageurl" class="form-label">Image URL</label>
       <input type="text" id="imageurl" class="form-control" name="imageurl" [(ngModel)]="product.imageurl" placeholder="Paste image link" />
     </div>
@@ -22,6 +27,16 @@
     <div class="mb-3">
       <label for="likes" class="form-label">Likes</label>
       <input type="number"  id="likes"  class="form-control"  name="likes"  [(ngModel)]="product.likes" min="0">
+    </div>
+
+   <div class="mb-3 form-check">
+    <input type="checkbox" id="discount" class="form-check-input" name="discount" [(ngModel)]="product.discount">
+    <label for="discount" class="form-check-label">discount</label>
+   </div>
+    
+   <div class="mb-3">
+      <label for="stock" class="form-label">Stocks</label>
+      <input type="number"  id="stock"  class="form-control"  name="stock"  [(ngModel)]="product.stock" min="0">
     </div>
 
     <button type="submit" class="btn btn-primary w-100" [disabled]="!productForm.valid">Save Product</button>

@@ -43,14 +43,14 @@
 
             <button
               class="btn btn-warning text-white"
-              (click)="goToUpdate()"
+              (click)="goToUpdate(product.id)"
             >
               ✏️ Update
             </button>
 
             <button
               class="btn btn-danger"
-              (click)="goToDelete(2)"
+              (click)="goToDelete(product.id)"
             >
               🗑 Remove
             </button>

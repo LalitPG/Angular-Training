@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../product.service';
 import { CounterComponent } from '../counter/counter.component';
 import { ProductHighlightDirective } from '../../../custom/custom/product-highlight.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, ProductHighlightDirective ],
+  imports: [CommonModule, RouterModule, ProductHighlightDirective,HttpClientModule],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.css'
+  styleUrl: './list.component.css',
+  providers: [ProductService]
 })
 export class ListComponent {
 products:any[]=[]
@@ -21,7 +23,11 @@ products:any[]=[]
               private route: ActivatedRoute) {  }
 
   ngOnInit() {
-    this.products = this.svc.getAllProducts();
+    this.svc.getAllProducts().subscribe(
+      (data)=>{
+        this.products = data;
+      }
+    );
   }
 
 

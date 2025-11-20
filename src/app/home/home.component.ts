@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../membership/auth.service';
+import { Loggedinguard } from '../loggedinguard.service';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,

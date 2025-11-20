@@ -6,10 +6,9 @@
   <h1>Login</h1>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="userEmail"  [(ngModel)]="user.email" #userEmail="ngModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-    required  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" >
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="username">UserName</label>
+    <input type="text" name="username"  [(ngModel)]="user.username" #userEmail="ngModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+    required >
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>

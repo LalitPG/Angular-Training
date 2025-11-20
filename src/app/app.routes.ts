@@ -18,7 +18,7 @@ export const routes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'delete/:id', component: DeleteComponent },
   { path: 'login', component:  SignInComponent},
-  { path: 'home', component:  HomeComponent,canActivate:[Loggedinguard]},
+  { path: 'home', component:  HomeComponent,canActivate:[Loggedinguard]}, //,canActivate:[Loggedinguard]
   { path: 'addtocart', component:  CartComponent},
   { path: 'register', component:  RegisterComponent},
   { path: 'cart', component:  CartComponent},

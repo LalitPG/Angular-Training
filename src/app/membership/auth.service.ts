@@ -1,22 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  status:boolean=false;
+      status:boolean=false;
+      apiPath:string = "http://localhost:8000/";
+      constructor(private httpClient:HttpClient){
 
-      validate(user: string, password: string): boolean {
-       console.log(user);
-       console.log(password);
-      if (user === 'lalit.patil@nihilent.com' && password === 'joy123') {
-        this.status=true;
-        console.log("checked True");
-        localStorage.setItem('username', user);
-        return true;
       }
-      else{
-        console.log(" service Invalid User");
-        return false;
-      }   
+      validate(user: any): Observable<any> {
+      return this.httpClient.post<any>(this.apiPath+"auth/login",user);
+     }
+     register(user:any):Observable<string>
+     {
+        return this.httpClient.post<string>(this.apiPath+"auth/register",user);
      }
 
     logout(): any {   localStorage.removeItem('username'); }

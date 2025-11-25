@@ -1,0 +1,17 @@
+ <div class="mb-3">
+    <!-- <label for="role" class="form-label">Customer Name: </label>
+    <select (change)="onNameChange($event)">
+        <option *ngFor="let m of customers">{{ m.name }}</option>
+    </select> -->
+    <!-- <select name="customers" (change)="onNameChange($event)" class="form-control">
+        <option *ngFor="let customer of customers" [ngValue]="customer.id">
+        {{ customer.name }}
+        </option>
+    </select> -->
+   <select class="form-control" (change)="onNameChange($event)">
+  <option *ngFor="let customer of customers" [value]="customer.id">
+    {{ customer.name }}
+  </option>
+</select>
+
+  </div>

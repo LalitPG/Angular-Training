@@ -1,0 +1,8 @@
+<p>order-summary works!</p>
+
+<h3>Orders for {{ selectedMonth }}</h3>
+    <ul>
+      <li *ngFor="let order of orders">
+        {{ order.id }} - {{ order.status }}
+      </li>
+</ul>

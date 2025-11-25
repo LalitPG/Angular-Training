@@ -10,6 +10,7 @@ import { CartComponent } from './shopping-cart/cart/cart.component';
 import { Loggedinguard } from './loggedinguard.service';
 import { GdiComponent } from './graphics/gdi/gdi.component';
 import { InsertComponent } from './catalog/products/insert/insert.component';
+import { DashboardComponent } from './orderprocessing/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'register', component:  RegisterComponent},
   { path: 'cart', component:  CartComponent},
   { path: 'gdi', component:  GdiComponent} ,
-  { path: 'create', component:  InsertComponent}
+  { path: 'create', component:  InsertComponent},
+  { path: 'dashboard', component:  DashboardComponent}
 ];

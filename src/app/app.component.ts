@@ -16,8 +16,8 @@ import { OrderprocessingModule } from './orderprocessing/orderprocessing.module'
   standalone: true,
   imports: [CommonModule,RouterModule,GraphicsModule, RouterOutlet, CatalogModule, ShoppingCartModule, MembershipModule,OrderprocessingModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers:[AuthService,Loggedinguard]
+  styleUrl: './app.component.css'
+  // providers:[AuthService]
 })
 export class AppComponent {
   title = 'Transflower Store';

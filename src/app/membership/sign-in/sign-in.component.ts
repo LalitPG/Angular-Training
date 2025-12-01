@@ -16,12 +16,18 @@ export class SignInComponent {
 
   isValidUser:boolean=false;
   user:User = new User('lalit','lalit123','admin');
-   
+  error = '';
    constructor(private svc:AuthService,
     private router: Router) {    }  //DI
 
     onSubmit(form:any):void
     { 
+
+      //  this.svc.validate(this.user).subscribe({
+      //     next: () => this.router.navigate(['/home']),
+      //     error: () => this.error = 'Invalid credentials'
+      //  });
+
        this.svc.validate(this.user).subscribe((data)=>{
         console.log(data);
         const {message} = data;
@@ -32,7 +38,6 @@ export class SignInComponent {
          console.log("Valid User !"); 
          localStorage.setItem('username',this.user.username);
          this.router.navigate(['/home']);
-         
        }
        else{ console.log("Invalid User !"); } 
        
